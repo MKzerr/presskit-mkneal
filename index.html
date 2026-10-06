@@ -235,7 +235,7 @@ const eventReferences = {
       ]
     },
     {
-      "title": "Open Mike",
+      "title": "Mouv Radio",
       "venue": "Mouv’",
       "date": "15 décembre · 17 h 30",
       "flyer": "assets/flyers/mouv-radio.jpg",
@@ -275,7 +275,7 @@ const eventReferences = {
       ]
     },
     {
-      "title": "Our Turn",
+      "title": "Jordan Brand",
       "venue": "Jordan Brand",
       "date": "",
       "flyer": "assets/flyers/jordan-brand.jpg",
@@ -287,6 +287,7 @@ const eventReferences = {
     {
       "title": "Prototype",
       "venue": "Le Rouge Pigalle",
+      "url": "https://www.instagram.com/lerougepigalleparis",
       "date": "3 avril 2026",
       "flyer": "assets/flyers/le-rouge-pigalle.jpg",
       "description": [
@@ -435,7 +436,7 @@ function renderEventPanel(d){
     panel.append(label,choice);
   }
   const heading=document.createElement('h4');heading.textContent=event.title;
-  const info=document.createElement('p');info.className='event-meta';info.textContent=event.venue+(event.date?' · '+event.date:'');
+  const info=document.createElement('p');info.className='event-meta';if(event.url){const venueLink=document.createElement('a');venueLink.href=event.url;venueLink.target='_blank';venueLink.rel='noopener noreferrer';venueLink.textContent=event.venue;info.append(venueLink,event.date?' · '+event.date:'');}else{info.textContent=event.venue+(event.date?' · '+event.date:'');}
   const description=document.createElement('p');description.className='event-description';description.textContent=event.description[lang==='fr'?0:1];
   const figure=document.createElement('figure');figure.className='event-flyer';
   const link=document.createElement('a');link.href=event.flyer;link.target='_blank';link.rel='noopener noreferrer';link.setAttribute('aria-label',t('Ouvrir le flyer : ','Open flyer: ')+event.title);
